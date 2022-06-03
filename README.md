@@ -1,19 +1,37 @@
-# Getting Started
+# Código fuente API REST donde se pueda detectar si un humano es mutante enviando la secuencia de ADN
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Instrucciones 
+API Url
+URL local: http://localhost:8080
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Web Services](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#boot-features-webservices)
+URL hosteada en Amazon: ec2-54-234-215-175.compute-1.amazonaws.com:8080
 
-### Guides
-The following guides illustrate how to use some features concretely:
+Servicios:
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Producing a SOAP web service](https://spring.io/guides/gs/producing-web-service/)
+* GET: 54.234.215.175:8080/stats
+* POST: 54.234.215.175:8080/mutant
+
+* Request ejemplo para mutante:
+{
+    "dna":["ATGCGA","CAGTGC","TTAATT","AGACGG","GCCCCA","TCACTG"]
+}
+
+* Request ejemplo para no mutante:
+{
+    "dna":["ATGCGA","CAGTGC","TTAATT","AGACGG","GCGTCA","TCACTG"]
+}
+
+
+
+### BASE DE DATOS
+Base de datos alojada en AWS 
+* host: database-mutants.clmyprdgulhc.us-east-1.rds.amazonaws.com
+* Puerto: 3306
+# Creacion de BD local MySql
+* create database mutants;
+* CREATE TABLE dna (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    dna VARCHAR(100) UNIQUE,
+    tipo VARCHAR(150)
+);
 
