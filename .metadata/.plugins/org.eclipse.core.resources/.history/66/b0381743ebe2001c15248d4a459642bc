@@ -1,0 +1,49 @@
+package com.mercadoLibre.demo.dto;
+
+public class EstadisticaDTO {
+	
+	private int humanos;
+	private int mutantes;
+	private double ratio;
+	
+	
+	
+	
+	
+	public double getHumanos() {
+		return humanos;
+	}
+
+	public void setHumanos(double humanos) {
+		this.humanos = humanos;
+	}
+	
+	public double getMutantes() {
+		return mutantes;
+	}
+
+	public void setMutantes(double mutantes) {
+		this.mutantes = mutantes;
+	}
+	public double getRatio() {
+		return ratio;
+	}
+	public void setRatio(double ratio) {
+		this.ratio = ratio;
+	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "{" +
+                "\"count_mutant_dna\":" + getMutantes() +
+                ",\"count_human_dna\":" + getHumanos() +
+                ",\"ratio\":" + getRatio() +
+                '}';
+	}
+	
+
+}

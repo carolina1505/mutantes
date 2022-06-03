@@ -1,0 +1,35 @@
+package com.mercadoLibre.demo.service;
+
+import com.mercadoLibre.demo.Entity.Dna;
+
+/**
+ * Clase DTO donde se define el objeto de transferencia de datos entre el cliente y el servidor
+ * 
+ * @author ccardona
+ * 
+ * @version 1.0, 03/06/2022
+ * 
+ *
+ */
+
+public interface IPersona {	
+	
+
+	void guardarPersona(Dna persona);
+
+	//void consultarH();
+
+	int consultarH();
+	
+	
+	int consultarM();
+	
+
+
+
+	
+	
+	
+	
+
+}

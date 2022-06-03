@@ -1,0 +1,38 @@
+package com.mercadoLibre.demo.utils;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.service.IPersona;
+
+
+@Component
+public class mutantUtils {
+	
+	@Autowired
+    IPersona ipersona;
+	
+	public DnaDTO guardarPersona(DnaDTO dnaDTO)
+    {
+        try
+        {
+            //Verifico si existe la persona
+            //Dna p = ipersona.findById(dna.getAdn());
+
+            //Si la persona existe no se guarda ni se actualiza la estadística
+            //if(p == null)
+            //{
+                //Guardo la nueva persona
+                return ipersona.guardarPersona(dna);
+            //}
+            return DnaDTO;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+
+    }
+
+}

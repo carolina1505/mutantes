@@ -1,0 +1,276 @@
+package com.mercadoLibre.demo.model;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+public class PersonaModel {
+	
+	private List<String> dna;
+
+    public List<String> getDna() {
+        return dna;
+    }
+
+    public void setDna(List<String> dna) {
+        this.dna = dna;
+    }
+
+	@Override
+	public String toString() {
+		return "PersonaModel [dna=" + dna + "]";
+	}
+	
+	public Boolean BuscarHorizontal (String letraBusc, String matriz[][]) {
+		System.out.println("buscar la " +  letraBusc);
+		String letra = letraBusc;
+		int contador = 0;
+		String banderaMutante = "false";
+
+		int indiceAnterior = 0;
+		int indiceActual = 0;
+		for (int x=0; x < matriz.length; x++) {
+			for (int y=0; y < matriz[x].length; y++) {
+
+
+				System.out.println ("matriz" + matriz[x][y]);			
+
+
+				if (letra.compareTo(matriz[x][y]) == 0) {
+					System.out.println("iguales");
+					indiceActual = y;
+					
+					if (contador == 0)
+					{						
+						indiceAnterior = (indiceActual-1);
+					}					
+					
+					if ((indiceActual - indiceAnterior) == 1 ) 
+					{
+						contador = contador + 1;
+						System.out.println("contador" + contador);			
+
+						
+					}
+					indiceAnterior = indiceActual;
+
+				}   
+			}
+			System.out.println("letra de " + letraBusc + " contador " + contador);
+			indiceAnterior = -1;
+			indiceActual = 0;
+			
+			if (contador == 4)
+			{
+				banderaMutante = "true";
+				contador = 0;
+			}
+			else 
+			{
+				contador = 0;
+			}
+		}
+		
+		if (banderaMutante.compareTo("true") == 0) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public Boolean BuscarVertical (String letraBusc, String matriz[][]) {
+		System.out.println("Vertical buscar la " +  letraBusc);
+		String letra = letraBusc;
+		int contador = 0;
+		String banderaMutante = "false";
+
+		int indiceAnterior = 0;
+		int indiceActual = 0;
+		for (int x=0; x < matriz.length; x++) {
+			for (int y=0; y < matriz[x].length; y++) {
+
+
+				System.out.println ("matriz" + matriz[y][x]);
+				System.out.println ("y " + y);
+				System.out.println ("x " + x);
+				
+				
+
+
+				if (letra.compareTo(matriz[y][x]) == 0) {
+					System.out.println("iguales");
+					indiceActual = y;
+					
+					if (contador == 0)
+					{						
+						indiceAnterior = (indiceActual-1);
+					}					
+					
+					if ((indiceActual - indiceAnterior) == 1 ) 
+					{
+						contador = contador + 1;
+						System.out.println("contador" + contador);			
+
+						
+					}
+					indiceAnterior = indiceActual;
+
+				}   
+			}
+			System.out.println("letra de " + letraBusc + " contador " + contador);
+			indiceAnterior = -1;
+			indiceActual = 0;
+			
+			if (contador == 4)
+			{
+				banderaMutante = "true";
+				contador = 0;
+			}
+			else 
+			{
+				contador = 0;
+			}
+		}
+		
+		if (banderaMutante.compareTo("true") == 0) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public Boolean BuscarDiagonal (String letraBusc, String matriz[][]) {
+		System.out.println("Diagonal buscar la " +  letraBusc);
+		String letra = letraBusc;
+		int contador = 0;
+		String banderaMutante = "false";
+
+		int indiceAnterior = 0;
+		int indiceActual = 0;
+		for (int x=0; x < matriz.length; x++) {
+			for (int y=0; y < matriz[x].length; y++) {
+
+
+				System.out.println ("matriz" + matriz[y][x]);
+				System.out.println ("y " + y);
+				System.out.println ("x " + x);
+				
+
+				if (letra.compareTo(matriz[x][y]) == 0) {
+					System.out.println("iguales");
+					
+					if (letra.compareTo(matriz[x][y])== 0) {
+						
+					}
+					
+					
+					indiceActual = y;
+					
+					if (contador == 0)
+					{						
+						indiceAnterior = (indiceActual-1);
+					}					
+					
+					if ((indiceActual - indiceAnterior) == 1 ) 
+					{
+						contador = contador + 1;
+						System.out.println("contador" + contador);			
+
+						
+					}
+					indiceAnterior = indiceActual;
+
+				}   
+			}
+			System.out.println("letra de " + letraBusc + " contador " + contador);
+			indiceAnterior = -1;
+			indiceActual = 0;
+			
+			if (contador == 4)
+			{
+				banderaMutante = "true";
+				contador = 0;
+			}
+			else 
+			{
+				contador = 0;
+			}
+		}
+		
+		if (banderaMutante.compareTo("true") == 0) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	public boolean isMutant() {
+
+		//Collection<List<String>> list = Arrays.asList(dna);
+		System.out.println("The list is: " + dna);
+
+		String matriz[][];
+		matriz = new String[dna.size()][dna.size()];
+
+		for(int i = 0; i < dna.size(); i++) {	 
+			String s = dna.get(i);
+			String[] strArr = s.split(""); 	      
+			ArrayList<String> list = new ArrayList<String>(Arrays.asList(strArr));
+
+			for(int j = 0; j < dna.size(); j++) {	 
+
+
+				String a = list.get(j);
+				matriz[i][j] = a;
+
+
+			}
+
+		}
+		
+		
+		//boolean horizontalA = BuscarHorizontal("A", matriz);
+		//boolean horizontalT = BuscarHorizontal("T", matriz);
+		//boolean horizontalC = BuscarHorizontal("C", matriz);
+		//boolean horizontalG = BuscarHorizontal("G", matriz);
+		boolean verticalG = BuscarVertical("G", matriz);
+		
+		//System.out.println ("horizontalA " + horizontalA);
+		//System.out.println ("horizontalT " + horizontalT);
+		//System.out.println ("horizontalC " + horizontalC);
+		//System.out.println ("horizontalG " + horizontalG);
+		System.out.println ("verticalG " + verticalG);
+		
+		if (/*(horizontalA) || (horizontalT) || (horizontalC) || (horizontalG) ||*/ (verticalG)) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+		
+
+
+	}
+
+
+
+
+
+
+
+}

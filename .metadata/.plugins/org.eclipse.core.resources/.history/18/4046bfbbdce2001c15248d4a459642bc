@@ -1,0 +1,50 @@
+package com.mercadoLibre.demo.repository;
+
+import java.beans.Statement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.stereotype.Repository;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.dto.EstadisticaDTO;
+
+@Repository
+public class RepositoryJDBC<T> {
+	
+	@Value("${insertar.MySQL:null}")
+	private String insertarDNA;
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
+	public void guardarBD(Dna dna) {		
+		
+		String sql = insertarDNA;
+		int result = jdbcTemplate.update(sql, dna.getAdn(), dna.getTipo());
+		
+	}
+	
+	@Value("${consultarH.MySQL:null}")
+	private String consultarHuman;
+	/*
+	public void consultarH() {
+		
+		String sql = consultarHuman;
+		jdbcTemplate.execute(sql);	
+		
+		
+	}*/
+	public double consultarH() {
+	    return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM mutants.dna WHERE tipo = \"human\"", Integer.class);
+	}	
+
+
+}

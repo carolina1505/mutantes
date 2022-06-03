@@ -1,0 +1,23 @@
+package com.mercadoLibre.demo.model;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Mutant {
+	
+	public String isMutant(Mutant dna){
+		JSONObject jsnobject = new JSONObject(dna);
+		
+		JSONArray jsonArray = jsnobject.getJSONArray("dna");
+		for (int i = 0; i < jsonArray.length(); i++) {
+		    JSONObject explrObject = jsonArray.getJSONObject(i);
+		    System.out.println(explrObject);
+		}
+		return explrObject;
+		
+		
+		//return false;
+		
+	}
+
+}

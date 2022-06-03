@@ -1,0 +1,47 @@
+package com.mercadoLibre.demo.repository;
+
+import java.beans.Statement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.mercadoLibre.demo.Entity.Dna;
+
+@Repository
+public class RepositoryJDBC {
+	
+	@Value("${insertar.MySQL:null}")
+	private String insertarDNA;
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
+	public void guardarBD(Dna dna) {		
+		
+		String sql = insertarDNA;
+		int result = jdbcTemplate.update(sql, dna.getAdn(), dna.getTipo());
+		
+	}
+	
+	@Value("${consultarH.MySQL:null}")
+	private String consultarHuman;
+	
+	public void consultarH() {
+		
+		String sql = consultarHuman;
+		jdbcTemplate.execute(sql);	
+		String mysqlUrl = "jdbc:mysql://localhost/mydatabase";
+	    java.sql.Connection con = DriverManager.getConnection(mysqlUrl, "root", "password");
+	      
+
+		java.sql.Statement stmt = con.createStatement();
+		ResultSet rs = stmt.execute("select * from MyPlayers");
+		
+	}
+
+
+}

@@ -1,0 +1,314 @@
+package com.mercadoLibre.demo.model;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.dao.MutantsDAO;
+import com.sistema.model.Persona;
+
+
+
+public class MutantModel {
+	
+	static Dna persona = new Dna();
+	
+	@Autowired
+	private MutantsDAO mutantsDAO;
+	
+	//Funcion recuersiva buscar letra en una matriz de forma horizontal
+	public static Boolean BuscarHorizontal (String letraBusc, String matriz[][]) {
+		System.out.println("buscar la " +  letraBusc);
+		String letra = letraBusc;
+		int contador = 0;
+		String banderaMutante = "false";
+
+		int indiceAnterior = 0;
+		int indiceActual = 0;
+		for (int x=0; x < matriz.length; x++) {
+			for (int y=0; y < matriz[x].length; y++) {
+
+
+				System.out.println ("matriz" + matriz[x][y]);			
+
+
+				if (letra.compareTo(matriz[x][y]) == 0) {
+					System.out.println("iguales");
+					
+					//Si se encuentra una coincidencia el indice actual es el mismo lugar donde la encontro para validar posterior a este
+					indiceActual = y;
+					
+					//Si es la primera coincidencia el indice anterior es igual al actual - 1 para establecerlo en la resta como el primero
+					if (contador == 0)
+					{						
+						indiceAnterior = (indiceActual-1);
+					}					
+					
+					//Si la resta entre los dos indices es 1 indica que la coincidencia es la inmediatamente contigua
+					if ((indiceActual - indiceAnterior) == 1 ) 
+					{
+						contador = contador + 1;
+						System.out.println("contador" + contador);			
+
+						
+					}
+					//Se igualan indices para validar que los posteriores sean los inmediatamente contiguos
+					indiceAnterior = indiceActual;
+
+				}   
+			}
+			System.out.println("letra de " + letraBusc + " contador " + contador);
+			//Se reinician indices y contadores al terminar de revisar las letras de la misma fila
+			
+			indiceAnterior = -1;
+			indiceActual = 0;
+			
+			if (contador >= 4)
+			{
+				banderaMutante = "true";
+				contador = 0;
+			}
+			else 
+			{
+				contador = 0;
+			}
+		}
+		
+		//Se validan al finalizar los for las banderas de mutantes para dar una respuesta.
+		
+		if (banderaMutante.compareTo("true") == 0) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	//Funcion recursiva buscar letra en una matriz de forma vertical
+	public static Boolean BuscarVertical (String letraBusc, String matriz[][]) {
+		System.out.println("Vertical buscar la " +  letraBusc);
+		String letra = letraBusc;
+		int contador = 0;
+		String banderaMutante = "false";
+
+		int indiceAnterior = 0;
+		int indiceActual = 0;
+		for (int x=0; x < matriz.length; x++) {
+			for (int y=0; y < matriz[x].length; y++) {
+
+
+				System.out.println ("matriz" + matriz[y][x]);
+				System.out.println ("y " + y);
+				System.out.println ("x " + x);
+				
+				
+
+
+				if (letra.compareTo(matriz[y][x]) == 0) {
+					System.out.println("iguales");
+					indiceActual = y;
+					
+					if (contador == 0)
+					{						
+						indiceAnterior = (indiceActual-1);
+					}					
+					
+					if ((indiceActual - indiceAnterior) == 1 ) 
+					{
+						contador = contador + 1;
+						System.out.println("contador" + contador);			
+
+						
+					}
+					indiceAnterior = indiceActual;
+
+				}   
+			}
+			System.out.println("letra de " + letraBusc + " contador " + contador);
+			indiceAnterior = -1;
+			indiceActual = 0;
+			
+			if (contador >= 4)
+			{
+				banderaMutante = "true";
+				contador = 0;
+			}
+			else 
+			{
+				contador = 0;
+			}
+		}
+		
+		if (banderaMutante.compareTo("true") == 0) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	//Funcion recursiva buscar letra en una matriz de forma diagonal
+	public static Boolean BuscarDiagonal (String letraBusc, String matriz[][]) {
+		System.out.println("Diagonal buscar la " +  letraBusc);
+		String letra = letraBusc;
+		int contador = 0;
+		String banderaMutante = "false";
+
+		int indiceAnterior = 0;
+		int indiceActual = 0;
+		int limite = (matriz.length - 1);
+		
+		for (int x=0; x < matriz.length; x++) {
+			for (int y=0; y < matriz[x].length; y++) {
+
+
+				System.out.println ("matriz" + matriz[x][y]);
+				System.out.println ("x " + x);
+				System.out.println ("y " + y);
+				
+				
+
+				if (letra.compareTo(matriz[x][y]) == 0) {
+					System.out.println("iguales");
+					
+					contador = contador + 1;
+					
+					int siguienteX = x+1;
+					int siguienteY = y+1;
+					System.out.println("siguienteX "+ siguienteX);
+					System.out.println("siguienteY "+ siguienteY);
+					System.out.println("limite "+ limite);
+					
+					
+					while ((siguienteX <= limite) && (siguienteY <= limite)) {
+						System.out.println ("matrizD " + matriz[siguienteX][siguienteY]);
+						
+						if (letra.compareTo(matriz[siguienteX][siguienteY])== 0) {
+							contador = contador + 1;
+							System.out.println("contador "+ contador);
+							
+						}
+						siguienteX = siguienteX +1;
+						siguienteY = siguienteY +1;
+						
+					}
+					
+					System.out.println("letra de " + letraBusc + " contador " + contador);
+					
+					if (contador >= 4)
+					{
+						banderaMutante = "true";
+						contador = 0;
+					}
+					else 
+					{
+						contador = 0;
+					}
+					
+				}   
+			}
+			
+		}
+		
+		if (banderaMutante.compareTo("true") == 0) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	//Metodo para detectar si un humano es mutante segun se secuencia de ADN 
+	public static boolean isMutant(List<String> dna) {
+		
+		String secuencia = String.join(",", dna);
+
+		//Se recibe la lista de String y se llena una matriz
+		System.out.println("The list is: " + dna);
+
+		String matriz[][];
+		matriz = new String[dna.size()][dna.size()];
+
+		//For para separar caracteres y llenar la matriz uno a uno
+		for(int i = 0; i < dna.size(); i++) {	 
+			String s = dna.get(i);
+			String[] strArr = s.split(""); 	      
+			ArrayList<String> list = new ArrayList<String>(Arrays.asList(strArr));
+
+			for(int j = 0; j < dna.size(); j++) {	 
+
+
+				String a = list.get(j);
+				matriz[i][j] = a;
+
+
+			}
+
+		}
+		
+		//Se buscan secuencia de cuatro letras iguales​, de forma oblicua, horizontal o vertical.
+		
+		boolean horizontalA = BuscarHorizontal("A", matriz);
+		boolean horizontalT = BuscarHorizontal("T", matriz);
+		boolean horizontalC = BuscarHorizontal("C", matriz);
+		boolean horizontalG = BuscarHorizontal("G", matriz);
+		boolean verticalA = BuscarVertical("A", matriz);
+		boolean verticalT = BuscarVertical("T", matriz);
+		boolean verticalC = BuscarVertical("C", matriz);
+		boolean verticalG = BuscarVertical("G", matriz);
+		boolean diagonalA = BuscarDiagonal("A", matriz);
+		boolean diagonalT = BuscarDiagonal("T", matriz);
+		boolean diagonalC = BuscarDiagonal("C", matriz);
+		boolean diagonalG = BuscarDiagonal("G", matriz);
+		
+		System.out.println ("horizontalA " + horizontalA);
+		System.out.println ("horizontalT " + horizontalT);
+		System.out.println ("horizontalC " + horizontalC);
+		System.out.println ("horizontalG " + horizontalG);
+		System.out.println ("verticalA " + verticalA);
+		System.out.println ("verticalT " + verticalT);
+		System.out.println ("verticalC " + verticalC);
+		System.out.println ("verticalG " + verticalG);
+		System.out.println ("diagonalA " + diagonalA);
+		System.out.println ("diagonalT " + diagonalT);
+		System.out.println ("diagonalC " + diagonalC);
+		System.out.println ("diagonalG " + diagonalG);
+		
+		
+		//Si alguna secuencia resulta positiva en cualquier direccion retorna true
+		
+		if ((horizontalA) || (horizontalT) || (horizontalC) || (horizontalG) || 
+				(verticalA) || (verticalT) || (verticalC) || (verticalG) ||
+				(diagonalA) || (diagonalT) || (diagonalC) || (diagonalG)) {
+			try {
+				persona.setAdn(secuencia);
+				M
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			persona.setTipo("mutant");
+			
+			return true;
+		}
+		else
+		{
+			try {
+				persona.setAdn(secuencia);
+				Dna savePersona(Dna dna);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			persona.setTipo("human");
+			return false;
+		}
+	}
+
+}

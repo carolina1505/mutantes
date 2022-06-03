@@ -1,0 +1,21 @@
+package com.mercadoLibre.demo.model;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Mutant {
+	
+	public boolean isMutant(String[] dna){
+		JSONObject jsnobject = new JSONObject(dna);
+		
+		JSONArray jsonArray = jsnobject.getJSONArray("locations");
+		for (int i = 0; i < jsonArray.length(); i++) {
+		    JSONObject explrObject = jsonArray.getJSONObject(i);
+		}
+		
+		
+		return false;
+		
+	}
+
+}

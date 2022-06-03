@@ -1,0 +1,5 @@
+package com.mercadoLibre.demo.repository;
+
+public class RepositoryJDBC {
+
+}

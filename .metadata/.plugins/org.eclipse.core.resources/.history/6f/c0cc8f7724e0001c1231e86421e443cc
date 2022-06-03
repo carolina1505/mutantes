@@ -1,0 +1,50 @@
+package com.mercadoLibre.demo.rest;
+
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mercadoLibre.demo.model.Mutant;
+import com.mercadoLibre.demo.model.PersonaModel;
+
+
+@RestController
+@RequestMapping("/")
+public class ProductsREST {
+	
+
+	
+	
+	@GetMapping //localhost:8080
+	//@RequestMapping(value="hello", method = RequestMethod.GET)
+	public String hello() {
+		return "hello world Caro Caro";
+	}
+	
+	@PostMapping("/postPersona")
+	public String postPersona(@RequestBody PersonaModel persona) {
+		return persona.toString();
+		//persona.convertir(persona);
+	}
+	
+	@PostMapping("/mutant")
+	//public JSONObject mutant (@RequestBody Mutant dna) {
+	public ResponseEntity<String> mutante(@RequestBody PersonaModel persona){
+		
+		
+		
+		//PersonaModel dna = mutant.isMutant(JsonDna);
+		return (ResponseEntity<String>) persona.mostrar();
+		//JSONObject dna = mutant.isMutant(JsonDna);
+		//return dna.isMutant(dna);
+		//return persona.toString();
+		
+	}
+
+}

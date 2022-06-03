@@ -1,0 +1,70 @@
+package com.mercadoLibre.demo.model;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class MutantModel {
+	
+	public boolean isMutant() {
+
+		//Collection<List<String>> list = Arrays.asList(dna);
+		System.out.println("The list is: " + dna);
+
+		String matriz[][];
+		matriz = new String[dna.size()][dna.size()];
+
+		for(int i = 0; i < dna.size(); i++) {	 
+			String s = dna.get(i);
+			String[] strArr = s.split(""); 	      
+			ArrayList<String> list = new ArrayList<String>(Arrays.asList(strArr));
+
+			for(int j = 0; j < dna.size(); j++) {	 
+
+
+				String a = list.get(j);
+				matriz[i][j] = a;
+
+
+			}
+
+		}
+		
+		
+		boolean horizontalA = BuscarHorizontal("A", matriz);
+		boolean horizontalT = BuscarHorizontal("T", matriz);
+		boolean horizontalC = BuscarHorizontal("C", matriz);
+		boolean horizontalG = BuscarHorizontal("G", matriz);
+		boolean verticalA = BuscarVertical("A", matriz);
+		boolean verticalT = BuscarVertical("T", matriz);
+		boolean verticalC = BuscarVertical("C", matriz);
+		boolean verticalG = BuscarVertical("G", matriz);
+		boolean diagonalA = BuscarDiagonal("A", matriz);
+		boolean diagonalT = BuscarDiagonal("T", matriz);
+		boolean diagonalC = BuscarDiagonal("C", matriz);
+		boolean diagonalG = BuscarDiagonal("G", matriz);
+		
+		System.out.println ("horizontalA " + horizontalA);
+		System.out.println ("horizontalT " + horizontalT);
+		System.out.println ("horizontalC " + horizontalC);
+		System.out.println ("horizontalG " + horizontalG);
+		System.out.println ("verticalA " + verticalA);
+		System.out.println ("verticalT " + verticalT);
+		System.out.println ("verticalC " + verticalC);
+		System.out.println ("verticalG " + verticalG);
+		System.out.println ("diagonalA " + diagonalA);
+		System.out.println ("diagonalT " + diagonalT);
+		System.out.println ("diagonalC " + diagonalC);
+		System.out.println ("diagonalG " + diagonalG);
+		
+		
+		if ((horizontalA) || (horizontalT) || (horizontalC) || (horizontalG) || 
+				(verticalA) || (verticalT) || (verticalC) || (verticalG) ||
+				(diagonalA) || (diagonalT) || (diagonalC) || (diagonalG)) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+}

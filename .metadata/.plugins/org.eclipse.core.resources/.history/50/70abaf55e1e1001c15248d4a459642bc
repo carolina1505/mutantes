@@ -1,0 +1,76 @@
+package com.mercadoLibre.demo.rest;
+import com.mercadoLibre.demo.service.IPersona;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.dto.DnaDTO;
+import com.mercadoLibre.demo.model.MutantModel;
+import com.mercadoLibre.demo.service.IPersona;
+
+
+@RestController
+@RequestMapping("/")
+
+public class MutantController {
+	
+	@Autowired
+	private static IPersona iPersona;
+	
+	/*@Autowired
+	private static DnaDTO dnaDTO;*/
+	
+	DnaDTO dnaDTO = new DnaDTO();
+	
+	@PostMapping("/mutant")
+	public ResponseEntity mutante(@RequestBody Dna persona){
+		
+
+		List<String> dna = persona.getDna();
+		String secuencia = String.join(",", dna);
+		iPersona = null;
+				
+		boolean muntant = MutantModel.isMutant(dna);
+				
+		String respuesta = null;
+		HttpStatus status;
+		String body;
+		if(muntant) {			
+			status = HttpStatus.OK;
+			body = "{\"message\": \"200-OK\"}";
+			
+			dnaDTO.setAdn("secuencia");
+			dnaDTO.setTipo("mutant");
+			
+			respuesta = iPersona.guardarPersona(dnaDTO);
+			
+		} else {
+			status = HttpStatus.FORBIDDEN;
+			body = "{\"message\": \"403-Forbidden\"}";
+			
+			dnaDTO.setAdn("secuencia");
+			dnaDTO.setTipo("human");
+			
+			respuesta = iPersona.guardarPersona(dnaDTO);
+		}
+		return ResponseEntity
+				.status(status)
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(body);
+		
+		
+	}
+	
+	
+
+}

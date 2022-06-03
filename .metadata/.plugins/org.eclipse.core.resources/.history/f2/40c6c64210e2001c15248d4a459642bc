@@ -1,0 +1,28 @@
+package com.mercadoLibre.demo;
+
+import java.security.PublicKey;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+@SpringBootApplication
+public class MercadoLibreApplication implements CommandLineRunner {
+	
+	@Autowired
+	private static JdbcTemplate jdbcTemplate;
+
+	public static void main(String[] args) {
+		SpringApplication.run(MercadoLibreApplication.class, args);
+		
+		@Override
+		public void guardar(String.. args) throws Exception {
+			String sql = "INSERT INTO mutants.dna(dna,tipo)VALUES(?,?);";
+			jdbcTemplate.update(sql, "ATGGGG", "mutant");
+			
+		}
+	}
+
+}

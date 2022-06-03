@@ -1,0 +1,10 @@
+package com.mercadoLibre.demo.model;
+
+public class Mutant {
+	
+	public boolean isMutant(String[] dna){
+		return false;
+		
+	}
+
+}

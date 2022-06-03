@@ -1,0 +1,64 @@
+package com.mercadoLibre.demo.impl;
+import org.springframework.context.annotation.Bean;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.repository.MutantRepository;
+import com.mercadoLibre.demo.repository.RepositoryJDBC;
+import com.mercadoLibre.demo.service.IPersona;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+
+
+@Service
+public class PersonaImpl implements IPersona{
+	
+	//MutantRepository prueba;
+	
+	RepositoryJDBC jdbc;
+	
+	@Autowired
+	public PersonaImpl(RepositoryJDBC jdbc) {
+		this.jdbc = jdbc;
+	}	
+	
+	
+	
+	/*@Bean
+	public static void MutantRepository() {
+		
+	}*/
+	
+	
+	//@Autowired static MutantRepository repositorioGuardar; 
+	//private static MutantRepository mutantRepository;
+	/*@Autowired
+	MutantRepository repositorioGuardar;*/
+
+	
+	/*@Override
+    public Dna guardarPersona(Dna persona) {
+
+		System.out.println("esta en imple");
+        //return mutantRepository.save(persona);
+		return prueba.save(persona);
+    }*/
+	
+	@Override
+	public void guardarBD() {
+		jdbc.guardarBD();
+	}
+
+	@Override
+	public Dna guardarPersona(Dna persona) {
+		// TODO Auto-generated method stub
+		return jdbc.guardarBD(persona);
+	}
+	
+	
+	
+
+
+}

@@ -1,0 +1,16 @@
+package com.mercadoLibre.demo.dao;
+
+import java.math.BigDecimal;
+
+import com.mercadoLibre.demo.Entity.Dna;
+
+
+public interface MutantsDAO {
+	
+    Boolean personaExiste(String id);
+
+    Dna savePersona(Dna persona);
+
+    BigDecimal contarPersonas(Boolean mutante);
+
+}

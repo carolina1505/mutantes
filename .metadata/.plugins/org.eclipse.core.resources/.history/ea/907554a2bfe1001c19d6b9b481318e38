@@ -1,0 +1,14 @@
+package com.mercadoLibre.demo.impl;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.service.IPersona;
+
+public class PersonaImpl implements IPersona{
+
+	@Override
+	public String guardarPersona(Dna persona) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

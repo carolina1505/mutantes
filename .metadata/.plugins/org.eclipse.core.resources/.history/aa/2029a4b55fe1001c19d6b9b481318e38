@@ -1,0 +1,5 @@
+package com.mercadoLibre.demo.service;
+
+public interface IPersona {
+
+}

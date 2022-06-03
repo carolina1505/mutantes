@@ -1,0 +1,18 @@
+server.port=8484
+
+
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/mutants?/?user=root
+spring.datasource.username=root
+spring.datasource.password=admin
+
+spring.jpa.show-sql= true
+
+logging.level.org.springframework.web: INFO
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.database-plataform=org.hibernate.dialect.MySQL8Dialect
+
+
+insertar.MySQL = INSERT INTO mutants.dna(dna,tipo)VALUES('ATGGGG','mutant');
+

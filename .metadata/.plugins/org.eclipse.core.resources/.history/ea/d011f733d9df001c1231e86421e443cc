@@ -1,0 +1,13 @@
+package com.mercadoLibre.demo.model;
+
+import org.json.JSONArray;
+
+public class Mutant {
+	
+	public boolean isMutant(String[] dna){
+		JSONArray jsonArray = new JSONArray(dna);
+		return false;
+		
+	}
+
+}

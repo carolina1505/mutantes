@@ -1,0 +1,10 @@
+package com.mercadoLibre.demo.service;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.dto.DnaDTO;
+
+public interface IPersona {
+	
+	String guardarPersona(DnaDTO dna);
+
+}

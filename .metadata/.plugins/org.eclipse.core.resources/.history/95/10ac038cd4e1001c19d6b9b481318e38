@@ -1,0 +1,8 @@
+package com.mercadoLibre.demo.dto;
+
+public class DnaDTO {
+	
+	private String adn;
+	private String tipo;
+
+}

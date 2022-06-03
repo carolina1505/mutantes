@@ -1,0 +1,31 @@
+package com.mercadoLibre.demo.dto;
+
+public class EstadisticaDTO {
+	
+	private int humanos;
+	private int mutantes;
+	private double ratio;
+	
+	
+	public int getHumanos() {
+		return humanos;
+	}
+	public void setHumanos(int humanos) {
+		this.humanos = humanos;
+	}
+	public int getMutantes() {
+		return mutantes;
+	}
+	public void setMutantes(int mutantes) {
+		this.mutantes = mutantes;
+	}
+	public double getRatio() {
+		return ratio;
+	}
+	public void setRatio(double ratio) {
+		this.ratio = ratio;
+	}
+	
+	
+
+}

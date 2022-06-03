@@ -1,0 +1,5 @@
+package com.mercadoLibre.demo.dto;
+
+public class EstadisticaDTO {
+
+}

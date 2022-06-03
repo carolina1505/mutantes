@@ -1,0 +1,14 @@
+package com.mercadoLibre.demo.dao;
+
+import java.math.BigDecimal;
+
+
+import com.mercadoLibre.demo.Entity.Dna;
+
+
+public interface MutantsDAO {
+	
+     String guardarPersona(Dna persona);
+
+    
+}

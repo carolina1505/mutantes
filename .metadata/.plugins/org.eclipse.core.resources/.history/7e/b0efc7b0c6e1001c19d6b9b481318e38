@@ -1,0 +1,8 @@
+package com.mercadoLibre.demo.repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mercadoLibre.demo.Entity.Dna;
+
+public interface MutantRepository extends JpaRepository<Dna, String>{
+
+}

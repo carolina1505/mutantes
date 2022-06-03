@@ -1,0 +1,5 @@
+package com.mercadoLibre.demo.Entity;
+
+public class Dna {
+
+}

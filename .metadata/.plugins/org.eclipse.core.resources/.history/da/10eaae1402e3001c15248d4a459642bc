@@ -1,0 +1,32 @@
+package com.mercadoLibre.demo.service;
+
+import com.mercadoLibre.demo.Entity.Dna;
+
+/**
+ * Interface compuesta por métodos para el intercambio de información desde el controlador
+ * 
+ * @author ccardona
+ * 
+ * @version 1.0, 03/06/2022
+ * 
+ *
+ */
+
+public interface IPersona {	
+	
+
+	void guardarPersona(Dna persona);
+
+	int consultarH();	
+	
+	int consultarM();
+	
+
+
+
+	
+	
+	
+	
+
+}

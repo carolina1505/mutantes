@@ -1,0 +1,27 @@
+package com.mercadoLibre.demo.dto;
+
+import java.io.Serializable;
+
+public class DnaDTO implements Serializable{
+	
+	
+	private static final long serialVersionUID = 1L;
+	
+	private String adn;
+	private String tipo;
+	public String getAdn() {
+		return adn;
+	}
+	public void setAdn(String adn) {
+		this.adn = adn;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
+
+}

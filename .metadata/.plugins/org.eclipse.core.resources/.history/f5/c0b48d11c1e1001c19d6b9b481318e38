@@ -1,0 +1,20 @@
+package com.mercadoLibre.demo.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.repository.MutantRepository;
+import com.mercadoLibre.demo.service.IPersona;
+
+public class PersonaImpl implements IPersona{
+	
+	@Autowired
+	private MutantRepository mutantRepository;
+
+	@Override
+	public String guardarPersona(Dna persona) {
+		Dna mutant = new Dna(); 
+		return null;
+	}
+
+}

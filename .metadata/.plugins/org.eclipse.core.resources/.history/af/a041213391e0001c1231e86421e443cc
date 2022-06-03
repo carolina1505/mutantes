@@ -1,0 +1,29 @@
+package com.mercadoLibre.demo.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity;
+@Table(name="dna")
+
+public class Dna {
+	
+	private String dna;
+	private String tipo;
+	public String getDna() {
+		return dna;
+	}
+	public void setDna(String dna) {
+		this.dna = dna;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
+
+}

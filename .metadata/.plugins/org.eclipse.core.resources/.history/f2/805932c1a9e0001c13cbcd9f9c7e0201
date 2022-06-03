@@ -1,0 +1,12 @@
+package com.mercadoLibre.demo.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.sistema.model.Persona;
+
+public interface MutantRepository extends JpaRepository<Dna> {
+	
+	@Query("SELECT p FROM Persona p WHERE LOWER(p.adn) = LOWER(:adn)")
+
+}

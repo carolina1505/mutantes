@@ -1,0 +1,39 @@
+package com.mercadoLibre.demo.impl;
+import org.springframework.context.annotation.Bean;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.dto.DnaDTO;
+import com.mercadoLibre.demo.repository.MutantRepository;
+import com.mercadoLibre.demo.service.IPersona;
+
+
+
+@Service
+
+public class PersonaImpl implements IPersona{
+	
+	
+	
+	//@Autowired static MutantRepository repositorioGuardar; 
+	//private static MutantRepository mutantRepository;
+	@Autowired
+	@Bean
+	MutantRepository repositorioGuardar;
+
+	
+	@Override
+    public Dna guardarPersona(Dna persona) {
+		System.out.println("esta en imple");
+        //return mutantRepository.save(persona);
+		return repositorioGuardar.save(persona);
+    }
+	
+	
+
+
+}

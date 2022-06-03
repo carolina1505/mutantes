@@ -1,0 +1,9 @@
+package com.mercadoLibre.demo.dto;
+
+public class EstadisticaDTO {
+	
+	private int humanos;
+	private int mutantes;
+	private double ratio;
+
+}

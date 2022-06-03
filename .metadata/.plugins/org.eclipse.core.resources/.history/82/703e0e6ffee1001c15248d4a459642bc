@@ -1,0 +1,32 @@
+package com.mercadoLibre.demo.service;
+
+import java.beans.JavaBean;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+
+import com.mercadoLibre.demo.Entity.Dna;
+import com.mercadoLibre.demo.dto.DnaDTO;
+
+
+public interface IPersona {
+	
+	System.out.println("esta en interface2");
+	Dna guardarPersona(Dna dna);
+	
+	static String guardarPersona(DnaDTO dnaDTO) {
+		System.out.println("esta en interface");
+		return "OK";
+	}
+	
+	public static void imprimirDTO(DnaDTO dnaDTO) {
+		System.out.println("dto Adn en I " + dnaDTO.getAdn());
+		System.out.println("dto tipo en I " + dnaDTO.getTipo());
+		
+	}
+
+	
+	
+	
+	
+
+}

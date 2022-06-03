@@ -1,0 +1,30 @@
+package com.mercadoLibre.demo.service;
+
+import java.beans.JavaBean;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+
+import com.mercadoLibre.demo.Entity.Dna;
+
+
+public interface IPersona {	
+	
+
+	void guardarPersona(Dna persona);
+
+	//void consultarH();
+
+	int consultarH();
+	
+	
+	int consultarM();
+	
+
+
+
+	
+	
+	
+	
+
+}

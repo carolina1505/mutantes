@@ -1,0 +1,19 @@
+package com.mercadoLibre.demo.repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.mercadoLibre.demo.Entity.Dna;
+
+@Repository
+public interface MutantRepository extends JpaRepository<Dna, String>{
+	
+	
+	@Override
+	default <S extends Dna> S save(S entity) {
+		
+		System.out.println("repositoprio ");
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
